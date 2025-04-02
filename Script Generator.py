@@ -1,8 +1,11 @@
 import os
 import google.generativeai as genai
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # Load Gemini API key from environment
-genai.configure(api_key=os.getenv("AIzaSyBXQe_hhNWBIvOGInZ_NzrqWD_Z0KK5wD0"))
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Define required parameters and their follow-up prompts
 video_parameters = {
@@ -14,7 +17,7 @@ video_parameters = {
 }
 
 # Initialize model
-model = genai.GenerativeModel(model_name="models/gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 def collect_parameters(user_input):
     filled_params = {}
